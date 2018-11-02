@@ -1,0 +1,10 @@
+[package]
+name = "simple-xml-builder"
+version = "1.0.0"
+authors = ["Archit Gupta <accelbread@gmail.com>"]
+description = "Simple XML builder/writer"
+license = "MIT"
+repository = "https://github.com/Accelbread/simple-xml-builder"
+
+[dependencies]
+indexmap = "1.0.2"
