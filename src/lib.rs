@@ -18,7 +18,10 @@
 //! use std::fs::File;
 //! use simple_xml_builder::XMLElement;
 //!
+//! # /*
 //! let mut file = File::create("sample.xml")?;
+//! # */
+//! # let mut file: Vec<u8> = Vec::new();
 //!
 //! let mut person = XMLElement::new("person");
 //! person.add_attribute("id", "232");
