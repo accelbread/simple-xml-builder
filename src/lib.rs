@@ -81,17 +81,19 @@ impl fmt::Display for XMLElement {
 
 impl XMLElement {
     /// Creates a new empty XML element using the given name for the tag.
-    pub fn new(name: &str) -> Self {
+    pub fn new(name: impl ToString) -> Self {
         XMLElement {
-            name: name.to_owned(),
+            name: name.to_string(),
             attributes: IndexMap::new(),
             content: XMLElementContent::Empty,
         }
     }
 
-    /// Adds an attribute to the XML element.
-    pub fn add_attribute(&mut self, name: &str, value: &str) {
-        self.attributes.insert(name.to_owned(), escape_str(value));
+    /// Adds an attribute to the XML element.  The attribute value can take any type which
+    /// implements [`Display`].
+    pub fn add_attribute(&mut self, name: impl ToString, value: impl ToString) {
+        self.attributes
+            .insert(name.to_string(), escape_str(&value.to_string()));
     }
 
     /// Adds a child element to the XML element.
@@ -125,11 +127,11 @@ impl XMLElement {
     /// # Panics
     ///
     /// Panics if the element is not empty.
-    pub fn add_text(&mut self, text: &str) {
+    pub fn add_text(&mut self, text: impl ToString) {
         use XMLElementContent::*;
         match self.content {
             Empty => {
-                self.content = Text(escape_str(text));
+                self.content = Text(escape_str(&text.to_string()));
             }
             _ => {
                 panic!("Attempted adding text to non-empty element.");
