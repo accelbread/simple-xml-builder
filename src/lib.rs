@@ -1,5 +1,5 @@
-//! `simple_xml_builder` provides basic functionality for building and outputing
-//! xml documents.
+//! `simple_xml_builder` provides basic functionality for building and
+//! outputting XML documents.
 //!
 //! The constructed model is write-only.
 //!
@@ -48,7 +48,7 @@
 //! </person>
 //! ```
 
-#![doc(html_root_url = "https://docs.rs/simple-xml-builder/1.0.0")]
+#![doc(html_root_url = "https://docs.rs/simple-xml-builder/1.1.0")]
 
 extern crate indexmap;
 use indexmap::IndexMap;
@@ -89,8 +89,8 @@ impl XMLElement {
         }
     }
 
-    /// Adds an attribute to the XML element.  The attribute value can take any type which
-    /// implements [`Display`].
+    /// Adds an attribute to the XML element. The attribute value can take any
+    /// type which implements [`fmt::Display`].
     pub fn add_attribute(&mut self, name: impl ToString, value: impl ToString) {
         self.attributes
             .insert(name.to_string(), escape_str(&value.to_string()));
@@ -139,7 +139,7 @@ impl XMLElement {
         }
     }
 
-    /// Outputs an utf8 XML document, where this element is the root element.
+    /// Outputs a UTF-8 XML document, where this element is the root element.
     ///
     /// Output is properly indented.
     ///
@@ -206,7 +206,6 @@ impl XMLElement {
 
 fn escape_str(input: &str) -> String {
     input
-        .to_owned()
         .replace('&', "&amp;")
         .replace('"', "&quot;")
         .replace('\'', "&apos;")
@@ -239,6 +238,10 @@ mod tests {
         let mut child3 = XMLElement::new("child3");
         child3.add_text("&< &");
         root.add_child(child3);
+        let mut child4 = XMLElement::new("child4");
+        child4.add_attribute("non-str-attribute", 5);
+        child4.add_text(6);
+        root.add_child(child4);
 
         let expected = r#"<?xml version = "1.0" encoding = "UTF-8"?>
 <root>
@@ -251,6 +254,7 @@ New line</inner>
 		<inner test="example" />
 	</child2>
 	<child3>&amp;&lt; &amp;</child3>
+	<child4 non-str-attribute="5">6</child4>
 </root>
 "#;
         assert_eq!(

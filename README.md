@@ -2,9 +2,9 @@
 
 [![Latest version](https://img.shields.io/crates/v/simple-xml-builder.svg)](https://crates.io/crates/simple-xml-builder)
 [![Documentation](https://docs.rs/simple-xml-builder/badge.svg)](https://docs.rs/simple-xml-builder)
-[![License](https://img.shields.io/crates/l/simple-xml-builder.svg)](https://github.com/Accelbread/simple-xml-builder#license)
+[![License](https://img.shields.io/crates/l/simple-xml-builder.svg)](https://github.com/accelbread/simple-xml-builder#license)
 
-A Rust library for building and outputing xml documents. The constructed model
+A Rust library for building and outputting XML documents. The constructed model
 is write-only, and allows for writing the represented XML document.
 
 [Documentation](https://docs.rs/simple-xml-builder)
@@ -15,7 +15,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-simple-xml-builder = "1.0.0"
+simple-xml-builder = "1.1.0"
 ```
 
 and this to your crate root:
