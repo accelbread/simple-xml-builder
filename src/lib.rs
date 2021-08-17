@@ -5,10 +5,10 @@
 //!
 //! # Usage
 //!
-//! Use [XMLElement](struct.XMLElement.html) to create elements with tags,
+//! Use [XMLElement] to create elements with tags,
 //! attributes, and either text or children.
 //! You can write an XML document by calling
-//! [write](struct.XMLElement.html#method.write) on your root element.
+//! [write](XMLElement::write) on your root element.
 //!
 //! # Example
 //!
@@ -29,7 +29,8 @@
 //! name.add_text("Joe Schmoe");
 //! person.add_child(name);
 //! let mut age = XMLElement::new("age");
-//! age.add_text("24");
+//! age.add_text(24); // `add_text` and `add_attribute` accept any type
+//!                   // that implements `ToString` (or `Display`)
 //! person.add_child(age);
 //! let hobbies = XMLElement::new("hobbies");
 //! person.add_child(hobbies);
