@@ -216,7 +216,7 @@ fn escape_str(input: &str) -> String {
 
 #[cfg(test)]
 mod tests {
-    use XMLElement;
+    use crate::XMLElement;
 
     #[test]
     fn write_xml() {
