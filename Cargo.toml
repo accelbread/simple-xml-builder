@@ -1,7 +1,6 @@
 [package]
 name = "simple-xml-builder"
 version = "1.1.1"
-edition = "2024"
 authors = ["Archit Gupta <accelbread@gmail.com>"]
 description = "Simple XML builder/writer"
 readme = "README.md"
